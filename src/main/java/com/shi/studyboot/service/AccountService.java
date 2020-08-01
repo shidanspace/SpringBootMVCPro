@@ -6,6 +6,9 @@ import com.shi.studyboot.service.respository.AccountRespository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class AccountService {
     @Autowired
@@ -21,6 +24,17 @@ public class AccountService {
 
         return ResStat.build(200);
 
+
+    }
+
+    public List<Account> findAll() {
+        return accountRespository.findAll();
+    }
+
+
+    public Optional<Account> findById() {
+        Optional<Account> byId = accountRespository.findById(1);
+        return byId;
 
     }
 }

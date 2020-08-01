@@ -9,8 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class MainController {
@@ -19,10 +22,19 @@ public class MainController {
     AccountService accountService;
 
     @RequestMapping("/list")
-    public String list() {
+    @ResponseBody
+    public Object list() {
 
-        return "list";
+        List<Account> list = accountService.findAll();
+        return list;
+    }
 
+    @RequestMapping("/listId")
+    @ResponseBody
+    public Object listId() {
+
+        Optional<Account> list = accountService.findById();
+        return list;
     }
 
     /**
@@ -61,11 +73,8 @@ public class MainController {
          */
         request.setAttribute("stat", stat);
 
-        System.out.println("stat:"+stat);
-        System.out.println("stat:"+ToStringBuilder.reflectionToString(stat));
-
-
-
+        System.out.println("stat:" + stat);
+        System.out.println("stat:" + ToStringBuilder.reflectionToString(stat));
 
         return "register";
 
