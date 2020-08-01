@@ -1,24 +1,33 @@
 package com.shi.studyboot.entity;
 
-import javax.persistence.*;
+import java.io.Serializable;
 
-@Entity
-public class Account {
+/**
+ * @author 
+ * 
+ */
+public class Account implements Serializable {
+    private Integer id;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
     private String loginName;
+
     private String passWord;
+
     private String nickName;
-    private int age;
+
+    private Integer age;
+
     private String location;
 
-    public int getId() {
+    private String role;
+
+    private static final long serialVersionUID = 1L;
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -46,11 +55,11 @@ public class Account {
         this.nickName = nickName;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
@@ -62,15 +71,64 @@ public class Account {
         this.location = location;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    @Override
+    public boolean equals(Object that) {
+        if (this == that) {
+            return true;
+        }
+        if (that == null) {
+            return false;
+        }
+        if (getClass() != that.getClass()) {
+            return false;
+        }
+        Account other = (Account) that;
+        return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
+            && (this.getLoginName() == null ? other.getLoginName() == null : this.getLoginName().equals(other.getLoginName()))
+            && (this.getPassWord() == null ? other.getPassWord() == null : this.getPassWord().equals(other.getPassWord()))
+            && (this.getNickName() == null ? other.getNickName() == null : this.getNickName().equals(other.getNickName()))
+            && (this.getAge() == null ? other.getAge() == null : this.getAge().equals(other.getAge()))
+            && (this.getLocation() == null ? other.getLocation() == null : this.getLocation().equals(other.getLocation()))
+            && (this.getRole() == null ? other.getRole() == null : this.getRole().equals(other.getRole()));
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
+        result = prime * result + ((getLoginName() == null) ? 0 : getLoginName().hashCode());
+        result = prime * result + ((getPassWord() == null) ? 0 : getPassWord().hashCode());
+        result = prime * result + ((getNickName() == null) ? 0 : getNickName().hashCode());
+        result = prime * result + ((getAge() == null) ? 0 : getAge().hashCode());
+        result = prime * result + ((getLocation() == null) ? 0 : getLocation().hashCode());
+        result = prime * result + ((getRole() == null) ? 0 : getRole().hashCode());
+        return result;
+    }
+
     @Override
     public String toString() {
-        return "Account{" +
-                "id=" + id +
-                ", loginName='" + loginName + '\'' +
-                ", passWord='" + passWord + '\'' +
-                ", nickName='" + nickName + '\'' +
-                ", age=" + age +
-                ", location='" + location + '\'' +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
+        sb.append(", loginName=").append(loginName);
+        sb.append(", passWord=").append(passWord);
+        sb.append(", nickName=").append(nickName);
+        sb.append(", age=").append(age);
+        sb.append(", location=").append(location);
+        sb.append(", role=").append(role);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
     }
 }

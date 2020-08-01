@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.springframework.org/schema/data/jaxb">
+<head>
+    <meta charset="UTF-8">
+    <title>用户注册</title>
+
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <!--contextPath th @{}-->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<!--提示信息-->
+
+<p th:text="${stat==null?'':stat.msg}" class="bg-danger">...</p>
+
+<!--报错解决-->
+<a th:href="@{/list}">用户列表</a>
+<a th:href="@{/register}">用户注册</a>
+
+
+<form action="register" method="post">
+    <div class="form-group">
+        <label for="loginName">loginName</label>
+        <input type="text" name="loginName" class="form-control" id="loginName" placeholder="请输入用户名">
+    </div>
+
+    <div class="form-group">
+        <label for="passWord">passWord</label>
+        <input type="password" name="passWord" class="form-control" id="passWord" placeholder="请输入密码">
+    </div>
+
+    <div class="form-group">
+        <label for="nickName">昵称</label>
+        <input type="text" name="nickName" class="form-control" id="nickName" placeholder="请输入昵称">
+    </div>
+
+    <div class="form-group">
+        <label for="nickName">年龄</label>
+        <input type="text" name="age" class="form-control" id="age" placeholder="请输入年龄">
+    </div>
+
+
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+</body>
+</html>
