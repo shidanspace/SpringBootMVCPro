@@ -1,4 +1,4 @@
-package com.shi.studyboot.mapper;
+package com.shi.studyboot.example;
 
 import java.util.ArrayList;
 import java.util.List;

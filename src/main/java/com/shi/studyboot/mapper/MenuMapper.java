@@ -1,6 +1,7 @@
 package com.shi.studyboot.mapper;
 
 import com.shi.studyboot.entity.Menu;
+import com.shi.studyboot.example.MenuExample;
 import org.springframework.stereotype.Repository;
 
 /**

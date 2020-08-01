@@ -1,6 +1,7 @@
 package com.shi.studyboot.mapper;
 
 import com.shi.studyboot.entity.Account;
+import com.shi.studyboot.example.AccountExample;
 import org.springframework.stereotype.Repository;
 
 /**
